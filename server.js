@@ -3,6 +3,9 @@ const AdminBroExpress = require('@admin-bro/express')
 const AdminBroMongoose = require('@admin-bro/mongoose')
 const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
+const { reqAdminAuth } = require('./middleware/authAdmin');
+
+const authController = require('./controllers/authController');
 
 const authRoutes = require('./routes/authRoutes');
 
@@ -23,7 +26,8 @@ const experienceRouter=require('./routes/experience')
 const app = express()
 
  // middleware
- app.use(express.static('public'));
+ app.use('/assets',express.static('assets'));
+ //app.use(express.static('public'));
  app.use(express.json());
  app.use(cookieParser());
 
@@ -46,8 +50,14 @@ app.use(methodOverride('_method'))
 
  app.get('*',checkUser);
 
+ app.get('/admin');
 
-app.get('/', async (req, res) => {
+ app.get('/', async (req, res) => {
+  
+  res.render('home.ejs')
+})
+
+app.get('/top', async (req, res) => {
   const topics = await top.find().sort({ createdAt: 'desc' })
   res.render('topques/index', { topics: topics })
 })
@@ -57,9 +67,15 @@ app.get('/exp', async (req, res) => {
   res.render('experience/index', { companies : companies })
 })
 
+app.get('/form',  authController.form_get);
+app.post('/form',authController.form_post);
+app.get('/form_blog',  authController.form_blog_get);
+app.post('/form_blog',authController.form_blog_post);
+
 
   app.use('/topques', topicquesRouter)
   app.use('/experience', experienceRouter)
+
 //admin bro
 
 AdminBro.registerAdapter(AdminBroMongoose)
