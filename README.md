@@ -10,11 +10,6 @@ A website made using nodejs and mongodb which aims to help candidates to crack i
 3. Install dependancies using npm install command
 4. Run site on localhost:4040 using node server.js command
 
-## Contributors
-
-1. Gitanjit Medhi
-2. Gyanendra Prakash
-
 ## Tech Stack
 1. node.js
 2. mongodb
@@ -48,4 +43,9 @@ Blogs can be added by anyone and can be viewed by others on being approved by ad
 ![](/image_stuff/admin.png)
 Admin panel , admins can add , delete and modify models' data .
 
+
+## Contributors
+
+1. Gitanjit Medhi
+2. Gyanendra Prakash
 
