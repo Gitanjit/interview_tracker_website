@@ -1,8 +1,6 @@
 const User = require("../models/User");
 const jwt = require('jsonwebtoken');
-//const Question = require('../models/questions');
 const Quest = require('../models/questions');
-//const Topics = require('../models/topics');
 const Topic = require("../models/topics");
 const Company = require("../models/companies");
 const Blog = require("../models/blog");
@@ -156,5 +154,5 @@ module.exports.form_blog_post = async (req, res) => {
 //logout get
 module.exports.logout_get = (req, res) => {
   res.cookie('jwt', '', { maxAge: 1 });
-  res.redirect('/');
+  res.redirect('/login');
 }

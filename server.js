@@ -50,31 +50,31 @@ app.use(methodOverride('_method'))
 
  app.get('*',checkUser);
 
- app.get('/admin');
+ app.get('/admin',reqAdminAuth);
 
- app.get('/', async (req, res) => {
+ app.get('/',requireAuth, async (req, res) => {
   
   res.render('home.ejs')
 })
 
-app.get('/top', async (req, res) => {
+app.get('/top//',requireAuth, async (req, res) => {
   const topics = await top.find().sort({ createdAt: 'desc' })
   res.render('topques/index', { topics: topics })
 })
 
-app.get('/exp', async (req, res) => {
+app.get('/exp//',requireAuth, async (req, res) => {
   const companies = await comp.find().sort({ createdAt: 'desc' })
   res.render('experience/index', { companies : companies })
 })
 
-app.get('/form',  authController.form_get);
-app.post('/form',authController.form_post);
-app.get('/form_blog',  authController.form_blog_get);
-app.post('/form_blog',authController.form_blog_post);
+app.get('/form', requireAuth, authController.form_get);
+app.post('/form', requireAuth, authController.form_post);
+app.get('/form_blog',requireAuth,  authController.form_blog_get);
+app.post('/form_blog',requireAuth, authController.form_blog_post);
 
 
-  app.use('/topques', topicquesRouter)
-  app.use('/experience', experienceRouter)
+  app.use('/top/topques', topicquesRouter)
+  app.use('/exp/experience', experienceRouter)
 
 //admin bro
 
