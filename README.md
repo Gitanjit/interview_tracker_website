@@ -31,6 +31,12 @@ Coding related topics listed out which tak users to topics wise questions
 ![](/image_stuff/experiences.png)
 Companies listed , with experiences in the form of blogs
 
+## Experience Pages
+<img src="image_stuff/intexp0.jpeg" width="60%" height="80%">
+.         
+<img src="image_stuff/intexp1.jpeg" width="60%" height="80%">
+Experiences with uploaded(by user) images , author name , "read more" and posted date.
+
 ## Adding Questions
 ![](/image_stuff/addq.png)
 Questions can be added by anyone and can be viewed by others on being approved by admin.
